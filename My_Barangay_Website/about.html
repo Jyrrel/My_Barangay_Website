@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="view-transition" content="same-origin">
+<title>About the Barangay — Barangay Bag-ong Lapasan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf1e2;
+    --cream-deep:#f5e1bf;
+    --ink:#2c2318;
+    --ink-soft:#5f5240;
+    --gold:#d9721c;
+    --gold-deep:#a8530f;
+    --yellow:#eeae1c;
+    --green:#3f4a34;
+    --line:#ecdcbd;
+    --line-soft:#f2e6c9;
+    --white:#fffdf8;
+    --flag-blue:#0a3d91;
+    --flag-red:#c8102e;
+    --shadow-sm: 0 1px 2px rgba(44,35,24,.06), 0 1px 1px rgba(44,35,24,.04);
+    --shadow-md: 0 8px 24px -8px rgba(44,35,24,.16), 0 2px 6px -2px rgba(44,35,24,.09);
+    --shadow-lg: 0 24px 48px -16px rgba(44,35,24,.24), 0 4px 12px -4px rgba(44,35,24,.11);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'EB Garamond', serif;
+    font-size:18px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 48px;}
+
+  /* ---------- AMBIENT BACKGROUND (logo-inspired) ---------- */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(560px 420px at 8% -6%, rgba(217,114,28,.16), transparent 60%),
+      radial-gradient(620px 460px at 108% 6%, rgba(238,174,28,.16), transparent 60%),
+      radial-gradient(680px 520px at 96% 92%, rgba(217,114,28,.10), transparent 60%),
+      radial-gradient(520px 420px at -4% 88%, rgba(238,174,28,.10), transparent 60%);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:24px 48px;
+    max-width:1280px;margin:0 auto;
+    position:sticky;top:0;z-index:30;
+    background:rgba(245,240,229,.82);
+    backdrop-filter:blur(10px) saturate(140%);
+    -webkit-backdrop-filter:blur(10px) saturate(140%);
+    border-bottom:1px solid transparent;
+    transition:border-color .25s ease, box-shadow .25s ease;
+  }
+  header::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:linear-gradient(90deg, var(--gold), var(--yellow));
+    opacity:.9;
+  }
+  body{border-top:6px solid var(--ink);}
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    letter-spacing:.02em;
+    display:flex;align-items:center;gap:12px;
+  }
+  .brand .seal{width:42px;height:42px;flex-shrink:0;object-fit:contain;filter:drop-shadow(0 1px 1px rgba(44,42,34,.15));}
+  nav ul{list-style:none;display:flex;gap:8px;}
+  nav a{
+    font-size:16px;color:var(--ink-soft);
+    position:relative;padding:8px 14px;border-radius:20px;
+    transition:color .2s ease, background .2s ease;
+  }
+  nav a:hover{color:var(--ink);background:var(--cream-deep);}
+  nav a.active{color:var(--ink);font-weight:600;background:var(--white);box-shadow:var(--shadow-sm);}
+  .nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--ink);padding:6px;border-radius:8px;}
+  .nav-toggle:hover{background:var(--cream-deep);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    display:grid;grid-template-columns:1fr 1fr;gap:64px;
+    max-width:1280px;margin:24px auto 110px;padding:0 48px;
+    align-items:stretch;
+  }
+  .hero-text{display:flex;flex-direction:column;justify-content:center;}
+  .eyebrow{
+    font-family:'EB Garamond',serif;font-style:italic;
+    color:var(--gold-deep);font-size:18px;letter-spacing:.04em;
+    margin-bottom:18px;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold-deep);display:inline-block;}
+  .hero-text h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:92px;
+    line-height:.98;
+    letter-spacing:-.01em;
+  }
+  .hero-text h1 em{
+    font-style:italic;font-weight:400;
+    display:block;color:var(--gold-deep);
+  }
+  .taglines{margin-top:32px;font-style:italic;color:var(--ink-soft);font-size:22px;}
+  .taglines div{margin-bottom:2px;}
+  .lede{
+    margin-top:26px;color:var(--ink-soft);font-size:19px;
+    max-width:46ch;
+  }
+  .cta-row{margin-top:38px;display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:16px 32px;
+    background:var(--ink);color:var(--cream);
+    font-style:italic;font-family:'EB Garamond',serif;font-size:17px;
+    letter-spacing:.02em;border-radius:40px;
+    box-shadow:var(--shadow-sm);
+    transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover{background:var(--gold-deep);transform:translateY(-2px);box-shadow:var(--shadow-md);}
+  .btn.ghost{
+    background:transparent;border:1px solid var(--ink);color:var(--ink);box-shadow:none;
+  }
+  .btn.ghost:hover{background:var(--ink);color:var(--cream);}
+
+  .hero-art{
+    border:1px solid var(--line);
+    background:var(--white);
+    display:flex;align-items:flex-end;justify-content:center;
+    overflow:hidden;position:relative;
+    min-height:560px;border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-lg);
+  }
+  .hero-art svg{width:100%;height:100%;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:100px 0;border-top:1px solid var(--line);}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-bottom:56px;gap:24px;flex-wrap:wrap;
+  }
+  .section-head .label{
+    font-style:italic;color:var(--gold-deep);font-size:17px;margin-bottom:10px;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .section-head .label::before{content:"";width:22px;height:1px;background:var(--gold-deep);display:inline-block;}
+  .section-head h2{
+    font-family:'Fraunces',serif;font-weight:500;font-size:44px;letter-spacing:-.01em;
+  }
+  .section-head p{max-width:40ch;color:var(--ink-soft);font-size:17px;}
+
+  /* ---------- PAGE BANNER (interior pages) ---------- */
+  .page-banner{
+    position:relative;height:280px;margin-top:28px;
+    border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);
+  }
+  .page-banner img{width:100%;height:100%;object-fit:cover;display:block;}
+  .page-banner::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(120deg, rgba(217,114,28,.38) 0%, rgba(238,174,28,.14) 55%, rgba(168,83,15,.22) 100%),
+      linear-gradient(0deg, rgba(44,35,24,.60) 0%, rgba(44,35,24,0) 62%);
+  }
+  .page-banner-label{
+    position:absolute;left:36px;bottom:26px;color:var(--cream);z-index:1;
+    font-family:'Fraunces',serif;font-style:italic;font-size:24px;
+  }
+  @media (max-width:920px){
+    .page-banner{height:170px;margin-top:20px;}
+    .page-banner-label{font-size:17px;left:20px;bottom:16px;}
+  }
+
+  /* ---------- PAGE TRANSITIONS ---------- */
+  @keyframes vt-fade-out{ from{opacity:1;} to{opacity:0;} }
+  @keyframes vt-fade-in{ from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:translateY(0);} }
+  ::view-transition-old(root){ animation:.22s ease both vt-fade-out; }
+  ::view-transition-new(root){ animation:.38s cubic-bezier(.22,1,.36,1) both vt-fade-in; }
+
+  /* ---------- ABOUT / KAPITAN ---------- */
+  .about{
+    display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:center;
+  }
+  .kapitan-seal{
+    width:220px;height:220px;border-radius:50%;
+    border:4px solid var(--white);background:var(--white);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;box-shadow:var(--shadow-md), 0 0 0 1px var(--line);
+  }
+  .kapitan-seal svg{width:60%;height:60%;}
+  .kapitan-seal img{width:100%;height:100%;object-fit:cover;}
+  .about h3{font-family:'Fraunces',serif;font-weight:500;font-size:32px;}
+  .about .role{font-style:italic;color:var(--gold-deep);margin:6px 0 18px;font-size:19px;}
+  .about p{color:var(--ink-soft);max-width:60ch;}
+
+  /* ---------- OFFICIALS / COUNCIL ---------- */
+  .subhead{
+    font-family:'Fraunces',serif;font-weight:500;font-style:italic;
+    font-size:15px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:28px;
+  }
+  .council-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  }
+  .official-card{
+    background:var(--white);padding:36px 26px;text-align:center;
+    border-radius:var(--radius-md);box-shadow:var(--shadow-sm);
+    transition:box-shadow .25s ease, transform .25s ease;
+  }
+  .official-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+  .official-photo{
+    width:140px;height:140px;border-radius:50%;margin:0 auto 20px;
+    border:1px solid var(--line);background:var(--cream);overflow:hidden;
+  }
+  .official-photo img{width:100%;height:100%;object-fit:cover;}
+  .official-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:19px;margin-bottom:6px;}
+  .official-card .official-role{font-style:italic;color:var(--gold-deep);font-size:14.5px;}
+
+  /* ---------- FESTIVALS ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card{
+    background:var(--white);padding:40px 34px;border-radius:var(--radius-md);
+    box-shadow:var(--shadow-sm);transition:box-shadow .25s ease, transform .25s ease;
+  }
+  .card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+  .card.has-img{padding:0;overflow:hidden;}
+  .card-img{width:100%;height:210px;object-fit:cover;display:block;}
+  .card-body{padding:30px 32px 36px;}
+  .card .date{font-style:italic;color:var(--gold-deep);font-size:16px;}
+  .card h3{font-family:'Fraunces',serif;font-weight:500;font-size:26px;margin:10px 0 14px;}
+  .card p{color:var(--ink-soft);font-size:16px;}
+
+  /* ---------- HOTLINES ---------- */
+  .hotline-list{display:flex;flex-direction:column;gap:14px;}
+  .hotline{
+    display:grid;grid-template-columns:2fr 1fr auto;gap:20px;align-items:center;
+    padding:24px 28px;background:var(--white);border-radius:var(--radius-md);
+    box-shadow:var(--shadow-sm);transition:box-shadow .2s ease, transform .2s ease;
+  }
+  .hotline:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+  .hotline .name{font-family:'Fraunces',serif;font-size:22px;font-weight:500;}
+  .hotline .desc{color:var(--ink-soft);font-size:16px;}
+  .hotline .number{
+    font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:var(--gold-deep);
+    justify-self:end;
+  }
+  .hotline-note{
+    margin-top:30px;color:var(--ink-soft);font-size:16px;font-style:italic;
+  }
+
+  /* ---------- BUSINESSES / SCHOOLS ---------- */
+  .biz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .biz{
+    background:var(--white);padding:38px 32px;border-radius:var(--radius-md);
+    box-shadow:var(--shadow-sm);transition:box-shadow .25s ease, transform .25s ease;
+  }
+  .biz:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+  .biz .tag{
+    display:inline-block;font-style:italic;color:var(--gold-deep);font-size:14px;
+    border:1px solid var(--gold-deep);padding:3px 12px;border-radius:20px;margin-bottom:16px;
+  }
+  .biz h3{font-family:'Fraunces',serif;font-weight:500;font-size:23px;margin-bottom:8px;}
+  .biz p{color:var(--ink-soft);font-size:15.5px;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{
+    background:var(--ink);color:var(--cream);padding:80px 0 40px;
+    border-top:6px solid var(--gold-deep);
+  }
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:50px;}
+  footer h2{font-family:'Fraunces',serif;font-weight:500;font-size:38px;margin-bottom:16px;}
+  footer .lede{color:#cfc8b4;}
+  footer h4{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin-bottom:16px;color:var(--gold);}
+  footer ul{list-style:none;}
+  footer li{margin-bottom:10px;color:#d8d2c1;font-size:16px;}
+  footer a.fb{
+    display:inline-flex;align-items:center;gap:10px;margin-top:22px;
+    color:var(--cream);font-style:italic;border-bottom:1px solid var(--gold);padding-bottom:4px;
+    transition:gap .2s ease, color .2s ease;
+  }
+  footer a.fb:hover{gap:16px;color:var(--gold);}
+  .foot-bottom{
+    margin-top:64px;padding-top:24px;border-top:1px solid #4a4636;
+    display:flex;justify-content:space-between;color:#8f8974;font-size:14px;flex-wrap:wrap;gap:10px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    header{padding:20px 24px;}
+    nav ul{display:none;}
+    .nav-toggle{display:block;}
+    .wrap{padding:0 24px;}
+    .hero{grid-template-columns:1fr;padding:0 24px;margin-bottom:70px;}
+    .hero-text h1{font-size:60px;}
+    .hero-art{min-height:380px;order:-1;}
+    .about{grid-template-columns:1fr;text-align:center;}
+    .kapitan-seal{margin:0 auto;}
+    .cards, .biz-grid{grid-template-columns:1fr;}
+    .council-grid{grid-template-columns:1fr 1fr;}
+    #about-barangay > .wrap > div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;gap:36px;}
+    .hotline{grid-template-columns:1fr;text-align:left;padding:22px 24px;}
+    .hotline .number{justify-self:start;}
+    section{padding:64px 0;}
+    .section-head h2{font-size:36px;}
+  }
+  @media (max-width:920px) and (min-width:0px){
+    section, header{max-width:100%;}
+  }
+
+  ::selection{background:var(--gold-deep);color:var(--white);}
+  :focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px;}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+    <img src="images/logo.png" class="seal" alt="Barangay Bag-ong Lapasan Seal">
+    Barangay Bag-ong Lapasan
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="officials.html">Officials</a></li>
+      <li><a href="tourist-spots.html">Tourist Spots</a></li>
+      <li><a href="festivals.html">Festivals &amp; Events</a></li>
+      <li><a href="schools.html">Schools</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <button class="nav-toggle" aria-label="menu">&#9776;</button>
+</header>
+
+<div class="wrap"><div class="page-banner"><img src="images/overview.jpg" alt="Barangay Bag-ong Lapasan Hall"><span class="page-banner-label">Getting to know Bag-ong Lapasan</span></div></div>
+<section id="about-barangay" style="border-top:none;padding-top:70px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="label">Get to know us</span>
+        <h2>About the Barangay</h2>
+      </div>
+      <p>A little history, where to find us, and a look at Bag-ong Lapasan on the map.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;">
+      <div>
+        <span class="subhead">History</span>
+        <p style="color:var(--ink-soft);">Barangay Lapasan used to be a large community in terms of territory — in the past, it included what are now the barangays of Camaman-an and Indahag, before these were made regular barangays of Cagayan de Oro City. According to historical literature and conventional beliefs, the earliest inhabitants of Barangay Lapasan were people from the Bukidnon and Higaonon tribes.</p>
+        <p style="color:var(--ink-soft);margin-top:16px;">Upon the order of President Diosdado Macapagal, a resettlement program was implemented, marking the arrival of people from the Visayas, particularly Boholano traders, who then settled in Lapasan. The Boholanos became the area's first settlers, while the generally shy Bukidnon and Higaonon moved to the interior areas now called Indahag and Camaman-an.</p>
+        <p style="color:var(--ink-soft);margin-top:16px;">The word "Lapasan" is believed to be derived from the word "lapas," meaning to cross. This theory holds because Barangay Lapasan, at the time, had no source of fresh, potable water for drinking and cooking except when it rained. Early settlers had to fetch fresh water from the Cagayan River, and in doing so, had to cross a creek — now called Bitan-ag Creek — the boundary on the western side of Lapasan. That is how Barangay Lapasan got its name.</p>
+        <p style="color:var(--ink-soft);margin-top:16px;">From these roots, Lapasan has grown into a bustling, highly urbanized barangay in the eastern part of Cagayan de Oro City, now home to government offices, a hospital, a university, and a growing number of local businesses and schools.</p>
+
+        <div style="margin-top:40px;">
+          <span class="subhead">Watch: Our History</span>
+          <div style="border:1px solid var(--line);overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);">
+            <iframe
+              src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D312685240521493&show_text=false&width=560"
+              width="100%" height="320" style="border:0;display:block;"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              title="Video: History of Barangay Bag-ong Lapasan">
+            </iframe>
+          </div>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15px;font-style:italic;">A short video on the history of Barangay Bag-ong Lapasan, shared on our Facebook page.</p>
+        </div>
+      </div>
+      <div>
+        <span class="subhead">Location</span>
+        <p style="color:var(--ink-soft);">Barangay Lapasan sits in the eastern part of Cagayan de Oro City, within the city's 2nd legislative district, and is one of the most populous barangays in the city. It is bordered by neighboring communities such as Sta. Cruz and San Juan, and is easily reached via Lapasan Hi-way, one of the city's main thoroughfares. The Barangay Hall, along Lapasan Hi-way, serves as the center of local governance and community services.</p>
+        <p style="color:var(--ink-soft);margin-top:16px;font-style:italic;">[Add specific landmarks, sitios, or directions residents and visitors should know.]</p>
+
+        <div style="margin-top:40px;">
+          <span class="subhead">Barangay Map</span>
+          <div style="border:1px solid var(--line);overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-sm);">
+            <iframe
+              src="https://www.google.com/maps?q=8.4831,124.6648&z=16&output=embed"
+              width="100%" height="320" style="border:0;display:block;"
+              allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Map of Barangay Lapasan (Bag-ong Lapasan), Cagayan de Oro City">
+            </iframe>
+          </div>
+          <p style="margin-top:16px;color:var(--ink-soft);font-size:15px;font-style:italic;">Map location is approximate. Verify the exact barangay hall location before visiting.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= CONTACT / FOOTER ================= -->
+<footer id="contact">
+  <div class="wrap foot-grid">
+    <div>
+      <h2>Get in touch</h2>
+      <p class="lede">Reach the Barangay Hall of Bag-ong Lapasan for concerns, requests, or to follow our announcements online.</p>
+      <a class="fb" href="https://www.facebook.com/radyovahvah" target="_blank" rel="noopener">Visit our Facebook Page &rarr;</a>
+      <div style="margin-top:26px;">
+        <h4 style="margin-bottom:8px;">Office Hours</h4>
+        <p style="color:#d8d2c1;font-size:15.5px;">Mon &ndash; Fri: 8AM &ndash; 5PM</p>
+        <p style="color:#d8d2c1;font-size:15.5px;">Sat: 9AM &ndash; 12PM</p>
+      </div>
+    </div>
+    <div>
+      <h4>Hotlines</h4>
+      <ul>
+        <li>Tanod: 0917 140 9503</li>
+        <li>Social Services: 0965 400 9928</li>
+        <li>BDRRMO: 0916 216 2703</li>
+        <li>Fire Station: 0971 821 022 / 911</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Officials</h4>
+      <ul>
+        <li>Kapitan Julito D. Ogsimer</li>
+        <li>Barangay Bag-ong Lapasan</li>
+        <li>Cagayan de Oro City</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>&copy; 2026 Barangay Bag-ong Lapasan</span>
+    <span>Made for the community</span>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const navUl = document.querySelector('nav ul');
+  toggle.addEventListener('click', () => {
+    const open = navUl.style.display === 'flex';
+    navUl.style.display = open ? 'none' : 'flex';
+    navUl.style.flexDirection = 'column';
+    navUl.style.position = 'absolute';
+    navUl.style.top = '84px';
+    navUl.style.right = '24px';
+    navUl.style.background = '#fffdf8';
+    navUl.style.border = '1px solid #d8cfb8';
+    navUl.style.padding = '18px 26px';
+    navUl.style.gap = '16px';
+    navUl.style.zIndex = '20';
+  });
+
+  // Smooth fade fallback for browsers without native View Transitions
+  if (!document.startViewTransition) {
+    document.documentElement.style.opacity = '0';
+    requestAnimationFrame(() => {
+      document.documentElement.style.transition = 'opacity .25s ease';
+      requestAnimationFrame(() => { document.documentElement.style.opacity = '1'; });
+    });
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const url = link.getAttribute('href');
+        if (link.target === '_blank' || e.metaKey || e.ctrlKey) return;
+        e.preventDefault();
+        document.documentElement.style.transition = 'opacity .2s ease';
+        document.documentElement.style.opacity = '0';
+        setTimeout(() => { window.location.href = url; }, 180);
+      });
+    });
+  }
+
+</script>
+
+</body>
+</html>
